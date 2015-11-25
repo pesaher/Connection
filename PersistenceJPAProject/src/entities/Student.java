@@ -23,11 +23,11 @@ public class Student implements Serializable {
 	@Column(name="Interests")
 	private String interests;
 
-	@Column(name="Level")
-	private String level;
-
 	@Column(name="PaymentData")
 	private String paymentData;
+
+	@Column(name="StudentLevel")
+	private String studentLevel;
 
 	public Student() {
 	}
@@ -56,20 +56,20 @@ public class Student implements Serializable {
 		this.interests = interests;
 	}
 
-	public String getLevel() {
-		return this.level;
-	}
-
-	public void setLevel(String level) {
-		this.level = level;
-	}
-
 	public String getPaymentData() {
 		return this.paymentData;
 	}
 
 	public void setPaymentData(String paymentData) {
 		this.paymentData = paymentData;
+	}
+
+	public String getStudentLevel() {
+		return this.studentLevel;
+	}
+
+	public void setStudentLevel(String studentLevel) {
+		this.studentLevel = studentLevel;
 	}
 
 }

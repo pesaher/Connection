@@ -6,23 +6,20 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the discount database table.
+ * The persistent class for the specialoffer database table.
  * 
  */
 @Entity
-@Table(name="discount")
-@NamedQuery(name="Discount.findAll", query="SELECT d FROM Discount d")
-public class Discount implements Serializable {
+@Table(name="specialoffer")
+@NamedQuery(name="Specialoffer.findAll", query="SELECT s FROM Specialoffer s")
+public class Specialoffer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="IdDiscount")
-	private int idDiscount;
+	@Column(name="IdSpecialOffer")
+	private int idSpecialOffer;
 
 	private int course_IdCourse;
-
-	@Column(name="DiscountValue")
-	private String discountValue;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="ExpirationDate")
@@ -35,15 +32,18 @@ public class Discount implements Serializable {
 	@Column(name="Quantity")
 	private double quantity;
 
-	public Discount() {
+	@Column(name="SpecialOfferValue")
+	private String specialOfferValue;
+
+	public Specialoffer() {
 	}
 
-	public int getIdDiscount() {
-		return this.idDiscount;
+	public int getIdSpecialOffer() {
+		return this.idSpecialOffer;
 	}
 
-	public void setIdDiscount(int idDiscount) {
-		this.idDiscount = idDiscount;
+	public void setIdSpecialOffer(int idSpecialOffer) {
+		this.idSpecialOffer = idSpecialOffer;
 	}
 
 	public int getCourse_IdCourse() {
@@ -52,14 +52,6 @@ public class Discount implements Serializable {
 
 	public void setCourse_IdCourse(int course_IdCourse) {
 		this.course_IdCourse = course_IdCourse;
-	}
-
-	public String getDiscountValue() {
-		return this.discountValue;
-	}
-
-	public void setDiscountValue(String discountValue) {
-		this.discountValue = discountValue;
 	}
 
 	public Date getExpirationDate() {
@@ -84,6 +76,14 @@ public class Discount implements Serializable {
 
 	public void setQuantity(double quantity) {
 		this.quantity = quantity;
+	}
+
+	public String getSpecialOfferValue() {
+		return this.specialOfferValue;
+	}
+
+	public void setSpecialOfferValue(String specialOfferValue) {
+		this.specialOfferValue = specialOfferValue;
 	}
 
 }

@@ -8,7 +8,6 @@ import javax.persistence.*;
  * The persistent class for the webuser database table.
  * 
  */
-
 @Entity
 @Table(name="webuser")
 @NamedQuery(name="Webuser.findAll", query="SELECT w FROM Webuser w")
@@ -28,9 +27,6 @@ public class Webuser implements Serializable {
 	@Column(name="Email")
 	private String email;
 
-	@Column(name="Name")
-	private String name;
-
 	@Column(name="Nickname")
 	private String nickname;
 
@@ -42,6 +38,9 @@ public class Webuser implements Serializable {
 
 	@Column(name="Surname")
 	private String surname;
+
+	@Column(name="UserName")
+	private String userName;
 
 	public Webuser() {
 	}
@@ -78,14 +77,6 @@ public class Webuser implements Serializable {
 		this.email = email;
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getNickname() {
 		return this.nickname;
 	}
@@ -116,6 +107,14 @@ public class Webuser implements Serializable {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	public String getUserName() {
+		return this.userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 }

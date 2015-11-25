@@ -8,6 +8,7 @@
 		<class>entities.InvitedteacherPK</class>
 		<class>entities.Lesson</class>
 		<class>entities.Lessonfile</class>
+		<class>entities.Specialoffer</class>
 		<class>entities.Student</class>
 		<class>entities.Studentcourse</class>
 		<class>entities.StudentcoursePK</class>
