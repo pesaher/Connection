@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="admin")
 @NamedQueries({
-		
+	@NamedQuery(name="Admin.findByPassword", query="SELECT a FROM Admin a WHERE a.passwordAdmin = :asdf"),		
 @NamedQuery(name="Admin.findAll", query="SELECT a FROM Admin a")
 
 })

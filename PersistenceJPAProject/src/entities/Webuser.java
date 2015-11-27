@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -9,8 +10,13 @@ import javax.persistence.*;
  * 
  */
 @Entity
+
 @Table(name="webuser")
-@NamedQuery(name="Webuser.findAll", query="SELECT w FROM Webuser w")
+@NamedQueries({
+	@NamedQuery(name="Webuser.findAll", query="SELECT w FROM Webuser w"),
+	@NamedQuery(name="Webuser.findByNickname", query="SELECT w FROM Webuser w WHERE w.nickname =:nickname"),
+
+})
 public class Webuser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
