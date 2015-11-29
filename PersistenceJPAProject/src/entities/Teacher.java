@@ -1,7 +1,9 @@
 package entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -15,8 +17,9 @@ import java.util.List;
 public class Teacher implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@PrimaryKeyJoinColumn
+	
 	@Id
+	@PrimaryKeyJoinColumn
 	private int webuser_IdUser;
 
 	@Column(name="Income")
@@ -30,10 +33,10 @@ public class Teacher implements Serializable {
 	@JoinTable(
 		name="invitedteacher"
 		, joinColumns={
-			@JoinColumn(name="teacher_WebUser_IdUser")
+			@JoinColumn(name="teacher_WebUser_IdUser", updatable = false, insertable = false)
 			}
 		, inverseJoinColumns={
-			@JoinColumn(name="course_idCourse")
+			@JoinColumn(name="course_idCourse", updatable = false, insertable = false)
 			}
 		)
 	private List<Course> courses1;
@@ -47,10 +50,10 @@ public class Teacher implements Serializable {
 	@JoinTable(
 		name="teachercourse"
 		, joinColumns={
-			@JoinColumn(name="teacher_WebUser_IdUser")
+			@JoinColumn(name="teacher_WebUser_IdUser", updatable = false, insertable = false)
 			}
 		, inverseJoinColumns={
-			@JoinColumn(name="course_idCourse")
+			@JoinColumn(name="course_idCourse", updatable = false, insertable = false)
 			}
 		)
 	private List<Course> courses2;

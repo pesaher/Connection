@@ -35,6 +35,7 @@ public class Discount implements Serializable {
 
 	//bi-directional many-to-one association to Course
 	@ManyToOne
+	@PrimaryKeyJoinColumn
 	private Course course;
 
 	public Discount() {

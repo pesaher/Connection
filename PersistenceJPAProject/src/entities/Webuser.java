@@ -48,14 +48,6 @@ public class Webuser implements Serializable {
 	@Column(name="UserName")
 	private String userName;
 
-	//bi-directional one-to-one association to Student
-	@OneToOne(mappedBy="webuser")
-	private Student student;
-
-	//bi-directional one-to-one association to Teacher
-	@OneToOne(mappedBy="webuser")
-	private Teacher teacher;
-
 	public Webuser() {
 	}
 
@@ -145,22 +137,6 @@ public class Webuser implements Serializable {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public Student getStudent() {
-		return this.student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public Teacher getTeacher() {
-		return this.teacher;
-	}
-
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
 	}
 
 }

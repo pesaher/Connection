@@ -23,14 +23,9 @@ public class InvitedteacherPK implements Serializable {
 	public int getCourse_idCourse() {
 		return this.course_idCourse;
 	}
-	public void setCourse_idCourse(int course_idCourse) {
-		this.course_idCourse = course_idCourse;
-	}
+
 	public int getTeacher_WebUser_IdUser() {
 		return this.teacher_WebUser_IdUser;
-	}
-	public void setTeacher_WebUser_IdUser(int teacher_WebUser_IdUser) {
-		this.teacher_WebUser_IdUser = teacher_WebUser_IdUser;
 	}
 
 	public boolean equals(Object other) {

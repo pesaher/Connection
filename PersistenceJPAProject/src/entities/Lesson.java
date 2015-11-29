@@ -18,6 +18,7 @@ public class Lesson implements Serializable {
 	@Id
 	private int idLesson;
 
+	@Column (updatable=false, insertable=false)
 	private int course_IdCourse;
 
 	@Column(name="Title")

@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -25,12 +26,12 @@ public class Studentcourse implements Serializable {
 
 	//bi-directional many-to-one association to Course
 	@ManyToOne
-	@JoinColumn(name="course_idCourse")
+	@PrimaryKeyJoinColumn
 	private Course course;
 
 	//bi-directional many-to-one association to Student
 	@ManyToOne
-	@JoinColumn(name="student_WebUser_IdUser")
+	@PrimaryKeyJoinColumn
 	private Student student;
 
 	public Studentcourse() {

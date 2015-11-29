@@ -17,8 +17,9 @@ import java.util.List;
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@PrimaryKeyJoinColumn 
-	@Id
+	
+	@Id 
+	@PrimaryKeyJoinColumn
 	private int webuser_IdUser;
 
 	@Column(name="Description")
@@ -34,11 +35,13 @@ public class Student implements Serializable {
 	private String studentLevel;
 
 	//bi-directional one-to-one association to Webuser
-	@OneToOne
+	@OneToOne 
+	@PrimaryKeyJoinColumn
 	private Webuser webuser;
 
 	//bi-directional many-to-one association to Studentcourse
 	@OneToMany(mappedBy="student")
+	@PrimaryKeyJoinColumn
 	private List<Studentcourse> studentcourses;
 
 	public Student() {
