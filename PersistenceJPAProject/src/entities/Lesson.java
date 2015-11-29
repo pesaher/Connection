@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -21,6 +22,10 @@ public class Lesson implements Serializable {
 
 	@Column(name="Title")
 	private String title;
+
+	//bi-directional many-to-one association to Lessonfile
+	@OneToMany(mappedBy="lesson")
+	private List<Lessonfile> lessonfiles;
 
 	public Lesson() {
 	}
@@ -47,6 +52,28 @@ public class Lesson implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public List<Lessonfile> getLessonfiles() {
+		return this.lessonfiles;
+	}
+
+	public void setLessonfiles(List<Lessonfile> lessonfiles) {
+		this.lessonfiles = lessonfiles;
+	}
+
+	public Lessonfile addLessonfile(Lessonfile lessonfile) {
+		getLessonfiles().add(lessonfile);
+		lessonfile.setLesson(this);
+
+		return lessonfile;
+	}
+
+	public Lessonfile removeLessonfile(Lessonfile lessonfile) {
+		getLessonfiles().remove(lessonfile);
+		lessonfile.setLesson(null);
+
+		return lessonfile;
 	}
 
 }

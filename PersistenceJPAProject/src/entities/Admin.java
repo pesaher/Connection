@@ -1,6 +1,8 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.persistence.*;
 
 
@@ -10,14 +12,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="admin")
-@NamedQueries({
-	@NamedQuery(name="Admin.findByPassword", query="SELECT a FROM Admin a WHERE a.passwordAdmin = :asdf"),		
 @NamedQuery(name="Admin.findAll", query="SELECT a FROM Admin a")
-
-})
 public class Admin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//private static AtomicInteger idGenerator = new AtomicInteger(0);
+	
 	@Id
 	private int idAdmin;
 
@@ -25,6 +25,7 @@ public class Admin implements Serializable {
 	private String passwordAdmin;
 
 	public Admin() {
+		this.idAdmin=0;
 	}
 
 	public int getIdAdmin() {

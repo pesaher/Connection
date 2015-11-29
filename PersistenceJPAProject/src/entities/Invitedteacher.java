@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -14,6 +15,7 @@ import javax.persistence.*;
 public class Invitedteacher implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@PrimaryKeyJoinColumn
 	@EmbeddedId
 	private InvitedteacherPK id;
 

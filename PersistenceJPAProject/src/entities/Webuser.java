@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 
@@ -10,13 +9,8 @@ import javax.persistence.*;
  * 
  */
 @Entity
-
 @Table(name="webuser")
-@NamedQueries({
-	@NamedQuery(name="Webuser.findAll", query="SELECT w FROM Webuser w"),
-	@NamedQuery(name="Webuser.findByNickname", query="SELECT w FROM Webuser w WHERE w.nickname =:nickname"),
-
-})
+@NamedQuery(name="Webuser.findAll", query="SELECT w FROM Webuser w")
 public class Webuser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +23,12 @@ public class Webuser implements Serializable {
 
 	@Column(name="Age")
 	private int age;
+
+	@Column(name="Category")
+	private int category;
+
+	@Column(name="Description")
+	private String description;
 
 	@Column(name="Email")
 	private String email;
@@ -47,6 +47,14 @@ public class Webuser implements Serializable {
 
 	@Column(name="UserName")
 	private String userName;
+
+	//bi-directional one-to-one association to Student
+	@OneToOne(mappedBy="webuser")
+	private Student student;
+
+	//bi-directional one-to-one association to Teacher
+	@OneToOne(mappedBy="webuser")
+	private Teacher teacher;
 
 	public Webuser() {
 	}
@@ -73,6 +81,22 @@ public class Webuser implements Serializable {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public int getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getEmail() {
@@ -121,6 +145,22 @@ public class Webuser implements Serializable {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public Student getStudent() {
+		return this.student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Teacher getTeacher() {
+		return this.teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 }

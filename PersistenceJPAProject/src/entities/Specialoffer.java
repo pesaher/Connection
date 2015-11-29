@@ -19,8 +19,6 @@ public class Specialoffer implements Serializable {
 	@Column(name="IdSpecialOffer")
 	private int idSpecialOffer;
 
-	private int course_IdCourse;
-
 	@Temporal(TemporalType.DATE)
 	@Column(name="ExpirationDate")
 	private Date expirationDate;
@@ -35,6 +33,10 @@ public class Specialoffer implements Serializable {
 	@Column(name="SpecialOfferValue")
 	private String specialOfferValue;
 
+	//bi-directional many-to-one association to Course
+	@ManyToOne
+	private Course course;
+
 	public Specialoffer() {
 	}
 
@@ -44,14 +46,6 @@ public class Specialoffer implements Serializable {
 
 	public void setIdSpecialOffer(int idSpecialOffer) {
 		this.idSpecialOffer = idSpecialOffer;
-	}
-
-	public int getCourse_IdCourse() {
-		return this.course_IdCourse;
-	}
-
-	public void setCourse_IdCourse(int course_IdCourse) {
-		this.course_IdCourse = course_IdCourse;
 	}
 
 	public Date getExpirationDate() {
@@ -84,6 +78,14 @@ public class Specialoffer implements Serializable {
 
 	public void setSpecialOfferValue(String specialOfferValue) {
 		this.specialOfferValue = specialOfferValue;
+	}
+
+	public Course getCourse() {
+		return this.course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 }

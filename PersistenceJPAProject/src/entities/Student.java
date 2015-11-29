@@ -1,7 +1,10 @@
 package entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.util.List;
 
 
 /**
@@ -14,6 +17,7 @@ import javax.persistence.*;
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@PrimaryKeyJoinColumn 
 	@Id
 	private int webuser_IdUser;
 
@@ -28,6 +32,14 @@ public class Student implements Serializable {
 
 	@Column(name="StudentLevel")
 	private String studentLevel;
+
+	//bi-directional one-to-one association to Webuser
+	@OneToOne
+	private Webuser webuser;
+
+	//bi-directional many-to-one association to Studentcourse
+	@OneToMany(mappedBy="student")
+	private List<Studentcourse> studentcourses;
 
 	public Student() {
 	}
@@ -70,6 +82,36 @@ public class Student implements Serializable {
 
 	public void setStudentLevel(String studentLevel) {
 		this.studentLevel = studentLevel;
+	}
+
+	public Webuser getWebuser() {
+		return this.webuser;
+	}
+
+	public void setWebuser(Webuser webuser) {
+		this.webuser = webuser;
+	}
+
+	public List<Studentcourse> getStudentcourses() {
+		return this.studentcourses;
+	}
+
+	public void setStudentcourses(List<Studentcourse> studentcourses) {
+		this.studentcourses = studentcourses;
+	}
+
+	public Studentcourse addStudentcours(Studentcourse studentcours) {
+		getStudentcourses().add(studentcours);
+		studentcours.setStudent(this);
+
+		return studentcours;
+	}
+
+	public Studentcourse removeStudentcours(Studentcourse studentcours) {
+		getStudentcourses().remove(studentcours);
+		studentcours.setStudent(null);
+
+		return studentcours;
 	}
 
 }

@@ -12,8 +12,10 @@ public class StudentcoursePK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
+	@Column(insertable=false, updatable=false)
 	private int course_idCourse;
 
+	@Column(insertable=false, updatable=false)
 	private int student_WebUser_IdUser;
 
 	public StudentcoursePK() {

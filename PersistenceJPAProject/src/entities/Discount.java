@@ -19,8 +19,6 @@ public class Discount implements Serializable {
 	@Column(name="IdDiscount")
 	private int idDiscount;
 
-	private int course_IdCourse;
-
 	@Column(name="DiscountValue")
 	private String discountValue;
 
@@ -35,6 +33,10 @@ public class Discount implements Serializable {
 	@Column(name="Quantity")
 	private double quantity;
 
+	//bi-directional many-to-one association to Course
+	@ManyToOne
+	private Course course;
+
 	public Discount() {
 	}
 
@@ -44,14 +46,6 @@ public class Discount implements Serializable {
 
 	public void setIdDiscount(int idDiscount) {
 		this.idDiscount = idDiscount;
-	}
-
-	public int getCourse_IdCourse() {
-		return this.course_IdCourse;
-	}
-
-	public void setCourse_IdCourse(int course_IdCourse) {
-		this.course_IdCourse = course_IdCourse;
 	}
 
 	public String getDiscountValue() {
@@ -84,6 +78,14 @@ public class Discount implements Serializable {
 
 	public void setQuantity(double quantity) {
 		this.quantity = quantity;
+	}
+
+	public Course getCourse() {
+		return this.course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 }

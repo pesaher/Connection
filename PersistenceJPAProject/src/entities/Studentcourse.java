@@ -23,6 +23,16 @@ public class Studentcourse implements Serializable {
 	@Column(name="Wishlist")
 	private byte wishlist;
 
+	//bi-directional many-to-one association to Course
+	@ManyToOne
+	@JoinColumn(name="course_idCourse")
+	private Course course;
+
+	//bi-directional many-to-one association to Student
+	@ManyToOne
+	@JoinColumn(name="student_WebUser_IdUser")
+	private Student student;
+
 	public Studentcourse() {
 	}
 
@@ -48,6 +58,22 @@ public class Studentcourse implements Serializable {
 
 	public void setWishlist(byte wishlist) {
 		this.wishlist = wishlist;
+	}
+
+	public Course getCourse() {
+		return this.course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public Student getStudent() {
+		return this.student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 }
