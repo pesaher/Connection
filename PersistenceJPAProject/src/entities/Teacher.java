@@ -10,11 +10,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="teacher")
--@NamedQueries({
--	@NamedQuery(name="Teacher.findAll", query="SELECT t FROM Teacher t"),
--	@NamedQuery(name="Teacher.findTeacherNickname", query="SELECT t FROM Teacher t")
--
--})
+@NamedQueries({
+	@NamedQuery(name="Teacher.findAll", query="SELECT t FROM Teacher t"),
+	@NamedQuery(name="Teacher.findTeacherNickname", query="SELECT t FROM Teacher t")
+
+})
 public class Teacher implements Serializable {
 	private static final long serialVersionUID = 1L;
 
