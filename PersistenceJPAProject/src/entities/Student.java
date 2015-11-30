@@ -1,10 +1,7 @@
 package entities;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-import java.util.List;
 
 
 /**
@@ -17,50 +14,87 @@ import java.util.List;
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
-	@Id 
-	@PrimaryKeyJoinColumn
-	private int webuser_IdUser;
+	@Id
+	@Column(name="IdStudent")
+	private int idStudent;
 
-	@Column(name="Description")
-	private String description;
+	@Column(name="Address")
+	private String address;
+
+	@Column(name="Age")
+	private int age;
+
+	@Column(name="DescriptionStudent")
+	private String descriptionStudent;
+
+	@Column(name="Email")
+	private String email;
 
 	@Column(name="Interests")
 	private String interests;
 
+	@Column(name="NameStudent")
+	private String nameStudent;
+
+	@Column(name="Nickname")
+	private String nickname;
+
+	@Column(name="PasswordStudent")
+	private String passwordStudent;
+
 	@Column(name="PaymentData")
 	private String paymentData;
+
+	@Column(name="ProfileImagePath")
+	private String profileImagePath;
 
 	@Column(name="StudentLevel")
 	private String studentLevel;
 
-	//bi-directional one-to-one association to Webuser
-	@OneToOne 
-	@PrimaryKeyJoinColumn
-	private Webuser webuser;
-
-	//bi-directional many-to-one association to Studentcourse
-	@OneToMany(mappedBy="student")
-	@PrimaryKeyJoinColumn
-	private List<Studentcourse> studentcourses;
+	@Column(name="Surname")
+	private String surname;
 
 	public Student() {
 	}
 
-	public int getWebuser_IdUser() {
-		return this.webuser_IdUser;
+	public int getIdStudent() {
+		return this.idStudent;
 	}
 
-	public void setWebuser_IdUser(int webuser_IdUser) {
-		this.webuser_IdUser = webuser_IdUser;
+	public void setIdStudent(int idStudent) {
+		this.idStudent = idStudent;
 	}
 
-	public String getDescription() {
-		return this.description;
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getAge() {
+		return this.age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getDescriptionStudent() {
+		return this.descriptionStudent;
+	}
+
+	public void setDescriptionStudent(String descriptionStudent) {
+		this.descriptionStudent = descriptionStudent;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getInterests() {
@@ -71,12 +105,44 @@ public class Student implements Serializable {
 		this.interests = interests;
 	}
 
+	public String getNameStudent() {
+		return this.nameStudent;
+	}
+
+	public void setNameStudent(String nameStudent) {
+		this.nameStudent = nameStudent;
+	}
+
+	public String getNickname() {
+		return this.nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getPasswordStudent() {
+		return this.passwordStudent;
+	}
+
+	public void setPasswordStudent(String passwordStudent) {
+		this.passwordStudent = passwordStudent;
+	}
+
 	public String getPaymentData() {
 		return this.paymentData;
 	}
 
 	public void setPaymentData(String paymentData) {
 		this.paymentData = paymentData;
+	}
+
+	public String getProfileImagePath() {
+		return this.profileImagePath;
+	}
+
+	public void setProfileImagePath(String profileImagePath) {
+		this.profileImagePath = profileImagePath;
 	}
 
 	public String getStudentLevel() {
@@ -87,34 +153,12 @@ public class Student implements Serializable {
 		this.studentLevel = studentLevel;
 	}
 
-	public Webuser getWebuser() {
-		return this.webuser;
+	public String getSurname() {
+		return this.surname;
 	}
 
-	public void setWebuser(Webuser webuser) {
-		this.webuser = webuser;
-	}
-
-	public List<Studentcourse> getStudentcourses() {
-		return this.studentcourses;
-	}
-
-	public void setStudentcourses(List<Studentcourse> studentcourses) {
-		this.studentcourses = studentcourses;
-	}
-
-	public Studentcourse addStudentcours(Studentcourse studentcours) {
-		getStudentcourses().add(studentcours);
-		studentcours.setStudent(this);
-
-		return studentcours;
-	}
-
-	public Studentcourse removeStudentcours(Studentcourse studentcours) {
-		getStudentcourses().remove(studentcours);
-		studentcours.setStudent(null);
-
-		return studentcours;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 }

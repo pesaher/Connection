@@ -12,20 +12,25 @@ public class InvitedteacherPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	@Column(insertable=false, updatable=false)
-	private int course_idCourse;
+	@Column(name="InvitedTeacher_IdCourse")
+	private int invitedTeacher_IdCourse;
 
-	@Column(insertable=false, updatable=false)
-	private int teacher_WebUser_IdUser;
+	@Column(name="InvitedTeacher_HostName")
+	private String invitedTeacher_HostName;
 
 	public InvitedteacherPK() {
 	}
-	public int getCourse_idCourse() {
-		return this.course_idCourse;
+	public int getInvitedTeacher_IdCourse() {
+		return this.invitedTeacher_IdCourse;
 	}
-
-	public int getTeacher_WebUser_IdUser() {
-		return this.teacher_WebUser_IdUser;
+	public void setInvitedTeacher_IdCourse(int invitedTeacher_IdCourse) {
+		this.invitedTeacher_IdCourse = invitedTeacher_IdCourse;
+	}
+	public String getInvitedTeacher_HostName() {
+		return this.invitedTeacher_HostName;
+	}
+	public void setInvitedTeacher_HostName(String invitedTeacher_HostName) {
+		this.invitedTeacher_HostName = invitedTeacher_HostName;
 	}
 
 	public boolean equals(Object other) {
@@ -37,15 +42,15 @@ public class InvitedteacherPK implements Serializable {
 		}
 		InvitedteacherPK castOther = (InvitedteacherPK)other;
 		return 
-			(this.course_idCourse == castOther.course_idCourse)
-			&& (this.teacher_WebUser_IdUser == castOther.teacher_WebUser_IdUser);
+			(this.invitedTeacher_IdCourse == castOther.invitedTeacher_IdCourse)
+			&& this.invitedTeacher_HostName.equals(castOther.invitedTeacher_HostName);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + this.course_idCourse;
-		hash = hash * prime + this.teacher_WebUser_IdUser;
+		hash = hash * prime + this.invitedTeacher_IdCourse;
+		hash = hash * prime + this.invitedTeacher_HostName.hashCode();
 		
 		return hash;
 	}

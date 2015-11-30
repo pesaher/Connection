@@ -30,12 +30,11 @@ public class Specialoffer implements Serializable {
 	@Column(name="Quantity")
 	private double quantity;
 
-	@Column(name="SpecialOfferValue")
-	private String specialOfferValue;
+	@Column(name="SpecialOffer_IdCourse")
+	private int specialOffer_IdCourse;
 
-	//bi-directional many-to-one association to Course
-	@ManyToOne
-	private Course course;
+	@Column(name="SpecialOfferCode")
+	private String specialOfferCode;
 
 	public Specialoffer() {
 	}
@@ -72,20 +71,20 @@ public class Specialoffer implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public String getSpecialOfferValue() {
-		return this.specialOfferValue;
+	public int getSpecialOffer_IdCourse() {
+		return this.specialOffer_IdCourse;
 	}
 
-	public void setSpecialOfferValue(String specialOfferValue) {
-		this.specialOfferValue = specialOfferValue;
+	public void setSpecialOffer_IdCourse(int specialOffer_IdCourse) {
+		this.specialOffer_IdCourse = specialOffer_IdCourse;
 	}
 
-	public Course getCourse() {
-		return this.course;
+	public String getSpecialOfferCode() {
+		return this.specialOfferCode;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setSpecialOfferCode(String specialOfferCode) {
+		this.specialOfferCode = specialOfferCode;
 	}
 
 }

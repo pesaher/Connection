@@ -4,6 +4,8 @@
 		<class>entities.Admin</class>
 		<class>entities.Course</class>
 		<class>entities.Discount</class>
+		<class>entities.Invitedteacher</class>
+		<class>entities.InvitedteacherPK</class>
 		<class>entities.Lesson</class>
 		<class>entities.Lessonfile</class>
 		<class>entities.Specialoffer</class>
@@ -11,9 +13,6 @@
 		<class>entities.Studentcourse</class>
 		<class>entities.StudentcoursePK</class>
 		<class>entities.Teacher</class>
-		<class>entities.Webuser</class>
-		<class>entities.Invitedteacher</class>
-		<class>entities.InvitedteacherPK</class>
 		<class>entities.Teachercourse</class>
 		<class>entities.TeachercoursePK</class>
 		<properties>

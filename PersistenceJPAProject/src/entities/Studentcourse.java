@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 
@@ -23,16 +22,6 @@ public class Studentcourse implements Serializable {
 
 	@Column(name="Wishlist")
 	private byte wishlist;
-
-	//bi-directional many-to-one association to Course
-	@ManyToOne
-	@PrimaryKeyJoinColumn
-	private Course course;
-
-	//bi-directional many-to-one association to Student
-	@ManyToOne
-	@PrimaryKeyJoinColumn
-	private Student student;
 
 	public Studentcourse() {
 	}
@@ -59,22 +48,6 @@ public class Studentcourse implements Serializable {
 
 	public void setWishlist(byte wishlist) {
 		this.wishlist = wishlist;
-	}
-
-	public Course getCourse() {
-		return this.course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
-
-	public Student getStudent() {
-		return this.student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
 	}
 
 }

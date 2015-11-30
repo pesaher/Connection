@@ -2,7 +2,6 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -22,8 +21,8 @@ public class Course implements Serializable {
 	@Column(name="Category")
 	private String category;
 
-	@Column(name="Description")
-	private String description;
+	@Column(name="DescriptionCourse")
+	private String descriptionCourse;
 
 	@Column(name="Duration")
 	private int duration;
@@ -34,8 +33,8 @@ public class Course implements Serializable {
 	@Column(name="Material")
 	private String material;
 
-	@Column(name="Notification")
-	private String notification;
+	@Column(name="Notifications")
+	private String notifications;
 
 	@Column(name="Price")
 	private double price;
@@ -52,28 +51,11 @@ public class Course implements Serializable {
 	@Column(name="Syllabus")
 	private String syllabus;
 
+	@Column(name="Title")
+	private String title;
+
 	@Column(name="Validated")
 	private byte validated;
-
-	//bi-directional many-to-one association to Discount
-	@OneToMany(mappedBy="course")
-	private List<Discount> discounts;
-
-	//bi-directional many-to-many association to Teacher
-	@ManyToMany(mappedBy="courses1")
-	private List<Teacher> teachers1;
-
-	//bi-directional many-to-one association to Specialoffer
-	@OneToMany(mappedBy="course")
-	private List<Specialoffer> specialoffers;
-
-	//bi-directional many-to-one association to Studentcourse
-	@OneToMany(mappedBy="course")
-	private List<Studentcourse> studentcourses;
-
-	//bi-directional many-to-many association to Teacher
-	@ManyToMany(mappedBy="courses2")
-	private List<Teacher> teachers2;
 
 	public Course() {
 	}
@@ -94,12 +76,12 @@ public class Course implements Serializable {
 		this.category = category;
 	}
 
-	public String getDescription() {
-		return this.description;
+	public String getDescriptionCourse() {
+		return this.descriptionCourse;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescriptionCourse(String descriptionCourse) {
+		this.descriptionCourse = descriptionCourse;
 	}
 
 	public int getDuration() {
@@ -126,12 +108,12 @@ public class Course implements Serializable {
 		this.material = material;
 	}
 
-	public String getNotification() {
-		return this.notification;
+	public String getNotifications() {
+		return this.notifications;
 	}
 
-	public void setNotification(String notification) {
-		this.notification = notification;
+	public void setNotifications(String notifications) {
+		this.notifications = notifications;
 	}
 
 	public double getPrice() {
@@ -174,94 +156,20 @@ public class Course implements Serializable {
 		this.syllabus = syllabus;
 	}
 
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public byte getValidated() {
 		return this.validated;
 	}
 
 	public void setValidated(byte validated) {
 		this.validated = validated;
-	}
-
-	public List<Discount> getDiscounts() {
-		return this.discounts;
-	}
-
-	public void setDiscounts(List<Discount> discounts) {
-		this.discounts = discounts;
-	}
-
-	public Discount addDiscount(Discount discount) {
-		getDiscounts().add(discount);
-		discount.setCourse(this);
-
-		return discount;
-	}
-
-	public Discount removeDiscount(Discount discount) {
-		getDiscounts().remove(discount);
-		discount.setCourse(null);
-
-		return discount;
-	}
-
-	public List<Teacher> getTeachers1() {
-		return this.teachers1;
-	}
-
-	public void setTeachers1(List<Teacher> teachers1) {
-		this.teachers1 = teachers1;
-	}
-
-	public List<Specialoffer> getSpecialoffers() {
-		return this.specialoffers;
-	}
-
-	public void setSpecialoffers(List<Specialoffer> specialoffers) {
-		this.specialoffers = specialoffers;
-	}
-
-	public Specialoffer addSpecialoffer(Specialoffer specialoffer) {
-		getSpecialoffers().add(specialoffer);
-		specialoffer.setCourse(this);
-
-		return specialoffer;
-	}
-
-	public Specialoffer removeSpecialoffer(Specialoffer specialoffer) {
-		getSpecialoffers().remove(specialoffer);
-		specialoffer.setCourse(null);
-
-		return specialoffer;
-	}
-
-	public List<Studentcourse> getStudentcourses() {
-		return this.studentcourses;
-	}
-
-	public void setStudentcourses(List<Studentcourse> studentcourses) {
-		this.studentcourses = studentcourses;
-	}
-
-	public Studentcourse addStudentcours(Studentcourse studentcours) {
-		getStudentcourses().add(studentcours);
-		studentcours.setCourse(this);
-
-		return studentcours;
-	}
-
-	public Studentcourse removeStudentcours(Studentcourse studentcours) {
-		getStudentcourses().remove(studentcours);
-		studentcours.setCourse(null);
-
-		return studentcours;
-	}
-
-	public List<Teacher> getTeachers2() {
-		return this.teachers2;
-	}
-
-	public void setTeachers2(List<Teacher> teachers2) {
-		this.teachers2 = teachers2;
 	}
 
 }

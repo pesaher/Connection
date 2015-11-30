@@ -24,9 +24,8 @@ public class Lessonfile implements Serializable {
 	@Column(name="FileType")
 	private String fileType;
 
-	//bi-directional many-to-one association to Lesson
-	@ManyToOne
-	private Lesson lesson;
+	@Column(name="LessonFile_IdLesson")
+	private int lessonFile_IdLesson;
 
 	public Lessonfile() {
 	}
@@ -55,12 +54,12 @@ public class Lessonfile implements Serializable {
 		this.fileType = fileType;
 	}
 
-	public Lesson getLesson() {
-		return this.lesson;
+	public int getLessonFile_IdLesson() {
+		return this.lessonFile_IdLesson;
 	}
 
-	public void setLesson(Lesson lesson) {
-		this.lesson = lesson;
+	public void setLessonFile_IdLesson(int lessonFile_IdLesson) {
+		this.lessonFile_IdLesson = lessonFile_IdLesson;
 	}
 
 }
