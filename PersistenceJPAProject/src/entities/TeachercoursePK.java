@@ -12,23 +12,25 @@ public class TeachercoursePK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	private int course_idCourse;
+	@Column(name="TeacherCourse_idCourse")
+	private int teacherCourse_idCourse;
 
-	private int teacher_WebUser_IdUser;
+	@Column(name="TeacherCourse_Teacher")
+	private String teacherCourse_Teacher;
 
 	public TeachercoursePK() {
 	}
-	public int getCourse_idCourse() {
-		return this.course_idCourse;
+	public int getTeacherCourse_idCourse() {
+		return this.teacherCourse_idCourse;
 	}
-	public void setCourse_idCourse(int course_idCourse) {
-		this.course_idCourse = course_idCourse;
+	public void setTeacherCourse_idCourse(int teacherCourse_idCourse) {
+		this.teacherCourse_idCourse = teacherCourse_idCourse;
 	}
-	public int getTeacher_WebUser_IdUser() {
-		return this.teacher_WebUser_IdUser;
+	public String getTeacherCourse_Teacher() {
+		return this.teacherCourse_Teacher;
 	}
-	public void setTeacher_WebUser_IdUser(int teacher_WebUser_IdUser) {
-		this.teacher_WebUser_IdUser = teacher_WebUser_IdUser;
+	public void setTeacherCourse_Teacher(String teacherCourse_Teacher) {
+		this.teacherCourse_Teacher = teacherCourse_Teacher;
 	}
 
 	public boolean equals(Object other) {
@@ -40,15 +42,15 @@ public class TeachercoursePK implements Serializable {
 		}
 		TeachercoursePK castOther = (TeachercoursePK)other;
 		return 
-			(this.course_idCourse == castOther.course_idCourse)
-			&& (this.teacher_WebUser_IdUser == castOther.teacher_WebUser_IdUser);
+			(this.teacherCourse_idCourse == castOther.teacherCourse_idCourse)
+			&& this.teacherCourse_Teacher.equals(castOther.teacherCourse_Teacher);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + this.course_idCourse;
-		hash = hash * prime + this.teacher_WebUser_IdUser;
+		hash = hash * prime + this.teacherCourse_idCourse;
+		hash = hash * prime + this.teacherCourse_Teacher.hashCode();
 		
 		return hash;
 	}

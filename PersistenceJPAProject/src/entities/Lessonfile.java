@@ -24,7 +24,8 @@ public class Lessonfile implements Serializable {
 	@Column(name="FileType")
 	private String fileType;
 
-	private int lesson_idLesson;
+	@Column(name="LessonFile_IdLesson")
+	private int lessonFile_IdLesson;
 
 	public Lessonfile() {
 	}
@@ -53,12 +54,12 @@ public class Lessonfile implements Serializable {
 		this.fileType = fileType;
 	}
 
-	public int getLesson_idLesson() {
-		return this.lesson_idLesson;
+	public int getLessonFile_IdLesson() {
+		return this.lessonFile_IdLesson;
 	}
 
-	public void setLesson_idLesson(int lesson_idLesson) {
-		this.lesson_idLesson = lesson_idLesson;
+	public void setLessonFile_IdLesson(int lessonFile_IdLesson) {
+		this.lessonFile_IdLesson = lessonFile_IdLesson;
 	}
 
 }

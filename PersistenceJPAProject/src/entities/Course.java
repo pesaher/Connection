@@ -21,8 +21,8 @@ public class Course implements Serializable {
 	@Column(name="Category")
 	private String category;
 
-	@Column(name="Description")
-	private String description;
+	@Column(name="DescriptionCourse")
+	private String descriptionCourse;
 
 	@Column(name="Duration")
 	private int duration;
@@ -33,8 +33,8 @@ public class Course implements Serializable {
 	@Column(name="Material")
 	private String material;
 
-	@Column(name="Notification")
-	private String notification;
+	@Column(name="Notifications")
+	private String notifications;
 
 	@Column(name="Price")
 	private double price;
@@ -50,6 +50,9 @@ public class Course implements Serializable {
 
 	@Column(name="Syllabus")
 	private String syllabus;
+
+	@Column(name="Title")
+	private String title;
 
 	@Column(name="Validated")
 	private byte validated;
@@ -73,12 +76,12 @@ public class Course implements Serializable {
 		this.category = category;
 	}
 
-	public String getDescription() {
-		return this.description;
+	public String getDescriptionCourse() {
+		return this.descriptionCourse;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescriptionCourse(String descriptionCourse) {
+		this.descriptionCourse = descriptionCourse;
 	}
 
 	public int getDuration() {
@@ -105,12 +108,12 @@ public class Course implements Serializable {
 		this.material = material;
 	}
 
-	public String getNotification() {
-		return this.notification;
+	public String getNotifications() {
+		return this.notifications;
 	}
 
-	public void setNotification(String notification) {
-		this.notification = notification;
+	public void setNotifications(String notifications) {
+		this.notifications = notifications;
 	}
 
 	public double getPrice() {
@@ -151,6 +154,14 @@ public class Course implements Serializable {
 
 	public void setSyllabus(String syllabus) {
 		this.syllabus = syllabus;
+	}
+
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public byte getValidated() {

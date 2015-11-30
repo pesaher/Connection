@@ -19,10 +19,11 @@ public class Discount implements Serializable {
 	@Column(name="IdDiscount")
 	private int idDiscount;
 
-	private int course_IdCourse;
+	@Column(name="Discount_IdCourse")
+	private int discount_IdCourse;
 
-	@Column(name="DiscountValue")
-	private String discountValue;
+	@Column(name="DiscountCode")
+	private String discountCode;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="ExpirationDate")
@@ -46,20 +47,20 @@ public class Discount implements Serializable {
 		this.idDiscount = idDiscount;
 	}
 
-	public int getCourse_IdCourse() {
-		return this.course_IdCourse;
+	public int getDiscount_IdCourse() {
+		return this.discount_IdCourse;
 	}
 
-	public void setCourse_IdCourse(int course_IdCourse) {
-		this.course_IdCourse = course_IdCourse;
+	public void setDiscount_IdCourse(int discount_IdCourse) {
+		this.discount_IdCourse = discount_IdCourse;
 	}
 
-	public String getDiscountValue() {
-		return this.discountValue;
+	public String getDiscountCode() {
+		return this.discountCode;
 	}
 
-	public void setDiscountValue(String discountValue) {
-		this.discountValue = discountValue;
+	public void setDiscountCode(String discountCode) {
+		this.discountCode = discountCode;
 	}
 
 	public Date getExpirationDate() {

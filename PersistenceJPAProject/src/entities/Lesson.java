@@ -15,9 +15,11 @@ public class Lesson implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="IdLesson")
 	private int idLesson;
 
-	private int course_IdCourse;
+	@Column(name="Lesson_IdCourse")
+	private int lesson_IdCourse;
 
 	@Column(name="Title")
 	private String title;
@@ -33,12 +35,12 @@ public class Lesson implements Serializable {
 		this.idLesson = idLesson;
 	}
 
-	public int getCourse_IdCourse() {
-		return this.course_IdCourse;
+	public int getLesson_IdCourse() {
+		return this.lesson_IdCourse;
 	}
 
-	public void setCourse_IdCourse(int course_IdCourse) {
-		this.course_IdCourse = course_IdCourse;
+	public void setLesson_IdCourse(int lesson_IdCourse) {
+		this.lesson_IdCourse = lesson_IdCourse;
 	}
 
 	public String getTitle() {

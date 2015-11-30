@@ -12,23 +12,25 @@ public class StudentcoursePK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	private int course_idCourse;
+	@Column(name="StudentCourse_idCourse")
+	private int studentCourse_idCourse;
 
-	private int student_WebUser_IdUser;
+	@Column(name="StudentCourse_Student")
+	private String studentCourse_Student;
 
 	public StudentcoursePK() {
 	}
-	public int getCourse_idCourse() {
-		return this.course_idCourse;
+	public int getStudentCourse_idCourse() {
+		return this.studentCourse_idCourse;
 	}
-	public void setCourse_idCourse(int course_idCourse) {
-		this.course_idCourse = course_idCourse;
+	public void setStudentCourse_idCourse(int studentCourse_idCourse) {
+		this.studentCourse_idCourse = studentCourse_idCourse;
 	}
-	public int getStudent_WebUser_IdUser() {
-		return this.student_WebUser_IdUser;
+	public String getStudentCourse_Student() {
+		return this.studentCourse_Student;
 	}
-	public void setStudent_WebUser_IdUser(int student_WebUser_IdUser) {
-		this.student_WebUser_IdUser = student_WebUser_IdUser;
+	public void setStudentCourse_Student(String studentCourse_Student) {
+		this.studentCourse_Student = studentCourse_Student;
 	}
 
 	public boolean equals(Object other) {
@@ -40,15 +42,15 @@ public class StudentcoursePK implements Serializable {
 		}
 		StudentcoursePK castOther = (StudentcoursePK)other;
 		return 
-			(this.course_idCourse == castOther.course_idCourse)
-			&& (this.student_WebUser_IdUser == castOther.student_WebUser_IdUser);
+			(this.studentCourse_idCourse == castOther.studentCourse_idCourse)
+			&& this.studentCourse_Student.equals(castOther.studentCourse_Student);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + this.course_idCourse;
-		hash = hash * prime + this.student_WebUser_IdUser;
+		hash = hash * prime + this.studentCourse_idCourse;
+		hash = hash * prime + this.studentCourse_Student.hashCode();
 		
 		return hash;
 	}

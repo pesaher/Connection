@@ -19,8 +19,6 @@ public class Specialoffer implements Serializable {
 	@Column(name="IdSpecialOffer")
 	private int idSpecialOffer;
 
-	private int course_IdCourse;
-
 	@Temporal(TemporalType.DATE)
 	@Column(name="ExpirationDate")
 	private Date expirationDate;
@@ -32,8 +30,11 @@ public class Specialoffer implements Serializable {
 	@Column(name="Quantity")
 	private double quantity;
 
-	@Column(name="SpecialOfferValue")
-	private String specialOfferValue;
+	@Column(name="SpecialOffer_IdCourse")
+	private int specialOffer_IdCourse;
+
+	@Column(name="SpecialOfferCode")
+	private String specialOfferCode;
 
 	public Specialoffer() {
 	}
@@ -44,14 +45,6 @@ public class Specialoffer implements Serializable {
 
 	public void setIdSpecialOffer(int idSpecialOffer) {
 		this.idSpecialOffer = idSpecialOffer;
-	}
-
-	public int getCourse_IdCourse() {
-		return this.course_IdCourse;
-	}
-
-	public void setCourse_IdCourse(int course_IdCourse) {
-		this.course_IdCourse = course_IdCourse;
 	}
 
 	public Date getExpirationDate() {
@@ -78,12 +71,20 @@ public class Specialoffer implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public String getSpecialOfferValue() {
-		return this.specialOfferValue;
+	public int getSpecialOffer_IdCourse() {
+		return this.specialOffer_IdCourse;
 	}
 
-	public void setSpecialOfferValue(String specialOfferValue) {
-		this.specialOfferValue = specialOfferValue;
+	public void setSpecialOffer_IdCourse(int specialOffer_IdCourse) {
+		this.specialOffer_IdCourse = specialOffer_IdCourse;
+	}
+
+	public String getSpecialOfferCode() {
+		return this.specialOfferCode;
+	}
+
+	public void setSpecialOfferCode(String specialOfferCode) {
+		this.specialOfferCode = specialOfferCode;
 	}
 
 }

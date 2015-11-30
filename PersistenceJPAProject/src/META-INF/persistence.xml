@@ -15,7 +15,6 @@
 		<class>entities.Teacher</class>
 		<class>entities.Teachercourse</class>
 		<class>entities.TeachercoursePK</class>
-		<class>entities.Webuser</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dokulearningdb"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
