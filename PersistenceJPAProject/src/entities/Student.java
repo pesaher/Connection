@@ -1,7 +1,11 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.persistence.*;
+
+import com.google.common.util.concurrent.ExecutionError;
 
 
 /**
@@ -10,7 +14,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="student")
-@NamedQuery(name="Student.findAll", query="SELECT s FROM Student s")
+@NamedQueries({
+	@NamedQuery(name="Student.findAll", query="SELECT s FROM Student s"),
+	@NamedQuery(name = "Student.findHighestId" , query = "SELECT MAX(s.idStudent) FROM Student s"),
+	@NamedQuery(name = "Student.findByNickname" , query ="SELECT s FROM Student s WHERE s.idStudent LIKE :nickname")
+})
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -53,8 +61,16 @@ public class Student implements Serializable {
 
 	@Column(name="Surname")
 	private String surname;
+	
+	private static AtomicInteger atomicID = null;
 
-	public Student() {
+	public Student() {}
+	
+	public void genID(){
+		if(atomicID == null)
+			generateID();
+		else
+			idStudent = atomicID.incrementAndGet();
 	}
 
 	public int getIdStudent() {
@@ -159,6 +175,34 @@ public class Student implements Serializable {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+	
+	/*
+	 * Function that takes the maximum value of the ID(PK) on the table
+	 * and generates in an atomic way and increment of that value, so to create
+	 * a new ID for the new element.
+	 */
+	private void generateID()
+	{
+		try
+		{
+			// 1 Create the factory of Entity Manager
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("PersistenceJPAProject");
+		
+			// 2 Create the Entity Manager
+			EntityManager em = factory.createEntityManager();
+		
+			// 3 Get one EntityTransaction and start it
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+	
+			atomicID = new AtomicInteger(em.createNamedQuery("Student.findHighestId", Integer.class)
+					.getSingleResult());
+			idStudent = atomicID.incrementAndGet();
+			em.close();
+		}catch(Error e){
+			throw new ExecutionError("Error Generating the first ID of Student", e);
+		}
 	}
 
 }
