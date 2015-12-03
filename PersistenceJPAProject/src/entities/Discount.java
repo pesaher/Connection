@@ -1,8 +1,13 @@
 package entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.google.common.util.concurrent.ExecutionError;
+
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -11,7 +16,11 @@ import java.util.Date;
  */
 @Entity
 @Table(name="discount")
-@NamedQuery(name="Discount.findAll", query="SELECT d FROM Discount d")
+
+@NamedQueries({
+	@NamedQuery(name="Discount.findAll", query="SELECT d FROM Discount d"),
+	@NamedQuery(name = "Discount.findHighestId" , query = "SELECT MAX(d.idDiscount) FROM Discount d")
+})
 public class Discount implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -35,8 +44,17 @@ public class Discount implements Serializable {
 
 	@Column(name="Quantity")
 	private double quantity;
+	
+	@Transient
+	private static AtomicInteger atomicID = null;
 
-	public Discount() {
+	public Discount() {}
+	
+	public void genID(){
+		if(atomicID != null)
+			generateID();
+		else
+			idDiscount = atomicID.incrementAndGet();
 	}
 
 	public int getIdDiscount() {
@@ -85,6 +103,34 @@ public class Discount implements Serializable {
 
 	public void setQuantity(double quantity) {
 		this.quantity = quantity;
+	}
+
+	/*
+	 * Function that takes the maximum value of the ID(PK) on the table
+	 * and generates in an atomic way and increment of that value, so to create
+	 * a new ID for the new element.
+	 */
+	private void generateID()
+	{
+		try
+		{
+			// 1 Create the factory of Entity Manager
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("PersistenceJPAProject");
+		
+			// 2 Create the Entity Manager
+			EntityManager em = factory.createEntityManager();
+		
+			// 3 Get one EntityTransaction and start it
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+	
+			atomicID = new AtomicInteger(em.createNamedQuery("Discount.findHighestId", Integer.class)
+					.getSingleResult());
+			idDiscount = atomicID.incrementAndGet();
+			em.close();
+		}catch(Error e){
+			throw new ExecutionError("Error Generating the first ID of Student", e);
+		}
 	}
 
 }

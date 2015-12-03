@@ -1,7 +1,11 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.persistence.*;
+
+import com.google.common.util.concurrent.ExecutionError;
 
 
 /**
@@ -10,11 +14,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="teacher")
--@NamedQueries({
--	@NamedQuery(name="Teacher.findAll", query="SELECT t FROM Teacher t"),
--	@NamedQuery(name="Teacher.findTeacherNickname", query="SELECT t FROM Teacher t")
--
--})
+@NamedQueries({
+	@NamedQuery(name="Teacher.findAll", query="SELECT t FROM Teacher t"),
+	@NamedQuery(name="Teacher.findTeacherNickname", query="SELECT t FROM Teacher t"),
+	@NamedQuery(name = "Teacher.findHighestId" , query = "SELECT MAX(t.idTeacher) FROM Teacher t")
+
+})
 public class Teacher implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -51,8 +56,16 @@ public class Teacher implements Serializable {
 
 	@Column(name="Surname")
 	private String surname;
+	
+	private static AtomicInteger atomicID = null;
 
-	public Teacher() {
+	public Teacher() {}
+	
+	public void genID(){
+		if(atomicID == null)
+			generateID();
+		else
+			idTeacher = atomicID.incrementAndGet();
 	}
 
 	public int getIdTeacher() {
@@ -141,6 +154,34 @@ public class Teacher implements Serializable {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+	
+	/*
+	 * Function that takes the maximum value of the ID(PK) on the table
+	 * and generates in an atomic way and increment of that value, so to create
+	 * a new ID for the new element.
+	 */
+	private void generateID()
+	{
+		try
+		{
+			// 1 Create the factory of Entity Manager
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("PersistenceJPAProject");
+		
+			// 2 Create the Entity Manager
+			EntityManager em = factory.createEntityManager();
+		
+			// 3 Get one EntityTransaction and start it
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+	
+			atomicID = new AtomicInteger(em.createNamedQuery("Teacher.findHighestId", Integer.class)
+					.getSingleResult());
+			idTeacher = atomicID.incrementAndGet();
+			em.close();
+		}catch(Error e){
+			throw new ExecutionError("Error Generating the first ID of Teacher", e);
+		}
 	}
 
 }
