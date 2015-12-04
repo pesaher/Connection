@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Table(name="course")
 @NamedQueries({
 		@NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
+		@NamedQuery(name = "Course.findValidatedCourses" , query = "SELECT c FROM Course c WHERE c.validated = 1"),
 		@NamedQuery(name = "Course.findByID" , query = "SELECT c FROM Course c WHERE c.idCourse = :courseID")
 })
 public class Course implements Serializable {

@@ -19,7 +19,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @NamedQueries({
 	@NamedQuery(name="Discount.findAll", query="SELECT d FROM Discount d"),
-	@NamedQuery(name = "Discount.findHighestId" , query = "SELECT MAX(d.idDiscount) FROM Discount d")
+	@NamedQuery(name = "Discount.findHighestId" , query = "SELECT MAX(d.idDiscount) FROM Discount d"),
+	@NamedQuery(name = "Discount.findByCourseID" , query = "SELECT d FROM Discount d WHERE d.discount_IdCourse = :idCourse")
 })
 public class Discount implements Serializable {
 	private static final long serialVersionUID = 1L;

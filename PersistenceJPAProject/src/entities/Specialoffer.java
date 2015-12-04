@@ -18,7 +18,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Table(name="specialoffer")
 @NamedQueries({
 	@NamedQuery(name="Specialoffer.findAll", query="SELECT s FROM Specialoffer s"),
-	@NamedQuery(name = "Specialoffer.findHighestId" , query = "SELECT MAX(s.idSpecialOffer) FROM Specialoffer s")
+	@NamedQuery(name = "Specialoffer.findHighestId" , query = "SELECT MAX(s.idSpecialOffer) FROM Specialoffer s"),
+	@NamedQuery(name = "Specialoffer.findByCourseId" , query = "SELECT s FROM Specialoffer s WHERE s.specialOffer_IdCourse = :idCourse")
 })
 public class Specialoffer implements Serializable {
 	private static final long serialVersionUID = 1L;
