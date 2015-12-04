@@ -14,11 +14,19 @@ import javax.persistence.*;
 public class Studentcourse implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private StudentcoursePK id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="IdStudentCourse")
+	private int idStudentCourse;
 
 	@Column(name="Percentage")
 	private int percentage;
+
+	@Column(name="StudentCourse_idCourse")
+	private int studentCourse_idCourse;
+
+	@Column(name="StudentCourse_Student")
+	private String studentCourse_Student;
 
 	@Column(name="Wishlist")
 	private byte wishlist;
@@ -26,12 +34,12 @@ public class Studentcourse implements Serializable {
 	public Studentcourse() {
 	}
 
-	public StudentcoursePK getId() {
-		return this.id;
+	public int getIdStudentCourse() {
+		return this.idStudentCourse;
 	}
 
-	public void setId(StudentcoursePK id) {
-		this.id = id;
+	public void setIdStudentCourse(int idStudentCourse) {
+		this.idStudentCourse = idStudentCourse;
 	}
 
 	public int getPercentage() {
@@ -40,6 +48,22 @@ public class Studentcourse implements Serializable {
 
 	public void setPercentage(int percentage) {
 		this.percentage = percentage;
+	}
+
+	public int getStudentCourse_idCourse() {
+		return this.studentCourse_idCourse;
+	}
+
+	public void setStudentCourse_idCourse(int studentCourse_idCourse) {
+		this.studentCourse_idCourse = studentCourse_idCourse;
+	}
+
+	public String getStudentCourse_Student() {
+		return this.studentCourse_Student;
+	}
+
+	public void setStudentCourse_Student(String studentCourse_Student) {
+		this.studentCourse_Student = studentCourse_Student;
 	}
 
 	public byte getWishlist() {

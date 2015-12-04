@@ -4,17 +4,14 @@
 		<class>entities.Admin</class>
 		<class>entities.Course</class>
 		<class>entities.Discount</class>
-		<class>entities.Invitedteacher</class>
-		<class>entities.InvitedteacherPK</class>
 		<class>entities.Lesson</class>
 		<class>entities.Lessonfile</class>
 		<class>entities.Specialoffer</class>
 		<class>entities.Student</class>
-		<class>entities.Studentcourse</class>
-		<class>entities.StudentcoursePK</class>
 		<class>entities.Teacher</class>
+		<class>entities.Studentcourse</class>
 		<class>entities.Teachercourse</class>
-		<class>entities.TeachercoursePK</class>
+		<class>entities.Invitedteacher</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dokulearningdb"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
