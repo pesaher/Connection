@@ -10,7 +10,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="course")
-@NamedQuery(name="Course.findAll", query="SELECT c FROM Course c")
+@NamedQueries({
+		@NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
+		@NamedQuery(name = "Course.findByID" , query = "SELECT c FROM Course c WHERE c.idCourse = :courseID")
+})
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
 
