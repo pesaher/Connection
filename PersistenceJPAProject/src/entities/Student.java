@@ -17,7 +17,7 @@ import com.google.common.util.concurrent.ExecutionError;
 @NamedQueries({
 	@NamedQuery(name="Student.findAll", query="SELECT s FROM Student s"),
 	@NamedQuery(name = "Student.findHighestId" , query = "SELECT MAX(s.idStudent) FROM Student s"),
-	@NamedQuery(name = "Student.findByNickname" , query ="SELECT s FROM Student s WHERE s.idStudent LIKE :nickname")
+	@NamedQuery(name = "Student.findByNickname" , query ="SELECT s FROM Student s WHERE s.nickname LIKE :nickname")
 })
 public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;

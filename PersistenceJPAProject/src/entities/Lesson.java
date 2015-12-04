@@ -15,8 +15,9 @@ import com.google.common.util.concurrent.ExecutionError;
 @Entity
 @Table(name="lesson")
 @NamedQueries({
-	@NamedQuery(name="Lesson.findAll", query="SELECT l FROM Lesson l"),
-	@NamedQuery(name = "Lesson.findHighestId" , query = "SELECT MAX(l.idLesson) FROM Lesson l")
+	@NamedQuery(name = "Lesson.findAll", query="SELECT l FROM Lesson l"),
+	@NamedQuery(name = "Lesson.findHighestId" , query = "SELECT MAX(l.idLesson) FROM Lesson l"),
+	@NamedQuery(name = "Lesson.findLessonsOfCourse" , query = "SELECT l FROM Lesson l WHERE l.lesson_IdCourse = :courseID")
 })
 public class Lesson implements Serializable {
 	private static final long serialVersionUID = 1L;
