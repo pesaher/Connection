@@ -8,10 +8,10 @@
 		<class>entities.Specialoffer</class>
 		<class>entities.Student</class>
 		<class>entities.Teacher</class>
-		<class>entities.Studentcourse</class>
 		<class>entities.Teachercourse</class>
 		<class>entities.Invitedteacher</class>
 		<class>entities.Course</class>
+		<class>entities.Studentcourse</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dokulearningdb"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>

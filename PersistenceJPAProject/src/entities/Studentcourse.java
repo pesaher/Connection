@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 
@@ -16,11 +15,11 @@ import javax.persistence.*;
 	@NamedQuery(name = "Studentcourse.findByNickname" , query = "SELECT s.studentCourse_idCourse FROM Studentcourse s WHERE s.studentCourse_Student = :nickname"),
 	@NamedQuery(name = "Studentcourse.findByCourseID" , query ="SELECT s.studentCourse_Student FROM Studentcourse s WHERE s.studentCourse_idCourse = :courseID")
 })
+
 public class Studentcourse implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="IdStudentCourse")
 	private int idStudentCourse;
 
@@ -34,7 +33,7 @@ public class Studentcourse implements Serializable {
 	private String studentCourse_Student;
 
 	@Column(name="Wishlist")
-	private byte wishlist;
+	private int wishlist;
 
 	public Studentcourse() {
 	}
@@ -71,11 +70,11 @@ public class Studentcourse implements Serializable {
 		this.studentCourse_Student = studentCourse_Student;
 	}
 
-	public byte getWishlist() {
+	public int getWishlist() {
 		return this.wishlist;
 	}
 
-	public void setWishlist(byte wishlist) {
+	public void setWishlist(int wishlist) {
 		this.wishlist = wishlist;
 	}
 

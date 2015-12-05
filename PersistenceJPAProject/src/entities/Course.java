@@ -40,7 +40,7 @@ public class Course implements Serializable {
 	private int duration;
 
 	@Column(name="Highlighted")
-	private byte highlighted;
+	private int highlighted;
 
 	@Column(name="Material")
 	private String material;
@@ -64,7 +64,7 @@ public class Course implements Serializable {
 	private String title;
 
 	@Column(name="Validated")
-	private byte validated;
+	private int validated;
 
 	public Course() {
 	}
@@ -109,11 +109,11 @@ public class Course implements Serializable {
 		this.duration = duration;
 	}
 
-	public byte getHighlighted() {
+	public int getHighlighted() {
 		return this.highlighted;
 	}
 
-	public void setHighlighted(byte highlighted) {
+	public void setHighlighted(int highlighted) {
 		this.highlighted = highlighted;
 	}
 
@@ -173,11 +173,11 @@ public class Course implements Serializable {
 		this.title = title;
 	}
 
-	public byte getValidated() {
+	public int getValidated() {
 		return this.validated;
 	}
 
-	public void setValidated(byte validated) {
+	public void setValidated(int validated) {
 		this.validated = validated;
 	}
 
