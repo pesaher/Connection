@@ -11,9 +11,9 @@ import javax.persistence.*;
 @Entity
 @Table(name="course")
 @NamedQueries({
-		@NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
-		@NamedQuery(name = "Course.findValidatedCourses" , query = "SELECT c FROM Course c WHERE c.validated = 1"),
-		@NamedQuery(name = "Course.findByID" , query = "SELECT c FROM Course c WHERE c.idCourse = :courseID")
+    @NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
+    @NamedQuery(name = "Course.findValidatedCourses" , query = "SELECT c FROM Course c WHERE c.validated = 1"),
+    @NamedQuery(name = "Course.findByID" , query = "SELECT c FROM Course c WHERE c.idCourse = :courseID")
 })
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -27,6 +27,9 @@ public class Course implements Serializable {
 
 	@Column(name="DescriptionCourse")
 	private String descriptionCourse;
+
+	@Column(name="Difficulty")
+	private int difficulty;
 
 	@Column(name="Duration")
 	private int duration;
@@ -48,9 +51,6 @@ public class Course implements Serializable {
 
 	@Column(name="Rating")
 	private double rating;
-
-	@Column(name="SpecialOfferType")
-	private String specialOfferType;
 
 	@Column(name="Syllabus")
 	private String syllabus;
@@ -86,6 +86,14 @@ public class Course implements Serializable {
 
 	public void setDescriptionCourse(String descriptionCourse) {
 		this.descriptionCourse = descriptionCourse;
+	}
+
+	public int getDifficulty() {
+		return this.difficulty;
+	}
+
+	public void setDifficulty(int difficulty) {
+		this.difficulty = difficulty;
 	}
 
 	public int getDuration() {
@@ -142,14 +150,6 @@ public class Course implements Serializable {
 
 	public void setRating(double rating) {
 		this.rating = rating;
-	}
-
-	public String getSpecialOfferType() {
-		return this.specialOfferType;
-	}
-
-	public void setSpecialOfferType(String specialOfferType) {
-		this.specialOfferType = specialOfferType;
 	}
 
 	public String getSyllabus() {

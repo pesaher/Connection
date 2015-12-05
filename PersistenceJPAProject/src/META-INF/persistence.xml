@@ -2,7 +2,6 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="PersistenceJPAProject" transaction-type="RESOURCE_LOCAL">
 		<class>entities.Admin</class>
-		<class>entities.Course</class>
 		<class>entities.Discount</class>
 		<class>entities.Lesson</class>
 		<class>entities.Lessonfile</class>
@@ -12,6 +11,7 @@
 		<class>entities.Studentcourse</class>
 		<class>entities.Teachercourse</class>
 		<class>entities.Invitedteacher</class>
+		<class>entities.Course</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dokulearningdb"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
