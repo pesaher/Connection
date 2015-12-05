@@ -14,7 +14,11 @@ import javax.persistence.*;
     @NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
     @NamedQuery(name = "Course.findValidatedCourses" , query = "SELECT c FROM Course c WHERE c.validated = 1"),
     @NamedQuery(name = "Course.findByID" , query = "SELECT c FROM Course c WHERE c.idCourse = :courseID"),
-    @NamedQuery(name = "Course.findByNickname", query = "SELECT c FROM Course c WHERE c.professor = :nickname")
+    @NamedQuery(name = "Course.findByNickname", query = "SELECT c FROM Course c WHERE c.professor = :nickname"),
+    @NamedQuery(name = "Course.findByNicknameValidated", query = "SELECT c FROM Course c WHERE c.professor = :nickname c.validated = 1"),
+    @NamedQuery(name = "Course.findByNicknameNotValidated", query = "SELECT c FROM Course c WHERE c.professor = :nickname c.validated = 0"),
+    @NamedQuery(name = "Course.findByTitle", query = "SELECT c FROM Course c WHERE c.title = :title"),
+    @NamedQuery(name = "Course.findDescription", query = "SELECT c.descriptionCourse FROM Course c")
 })
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
