@@ -18,7 +18,8 @@ import com.google.common.util.concurrent.ExecutionError;
 	@NamedQuery(name = "Teachercourse.findAll", query = "SELECT t FROM Teachercourse t"),
 	@NamedQuery(name = "Teachercourse.findHighestID" , query = "SELECT  MAX(t.idTeacherCourse) FROM Teachercourse t"),
 	@NamedQuery(name = "Teachercourse.findByNickname" , query = "SELECT t.teacherCourse_idCourse FROM Teachercourse t WHERE t.teacherCourse_Teacher = :nickname"),
-	@NamedQuery(name = "Teachercourse.findByCourseID" , query ="SELECT t.teacherCourse_Teacher FROM Teachercourse t WHERE t.teacherCourse_idCourse = :courseID")
+	@NamedQuery(name = "Teachercourse.findByCourseID" , query ="SELECT t.teacherCourse_Teacher FROM Teachercourse t WHERE t.teacherCourse_idCourse = :courseID"),
+	@NamedQuery(name = "Teachercourse.deleteByCourseID" , query ="DELETE FROM Teachercourse t WHERE t.teacherCourse_idCourse = :courseID")
 })
 public class Teachercourse implements Serializable {
 	private static final long serialVersionUID = 1L;
