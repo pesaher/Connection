@@ -14,7 +14,8 @@ import javax.persistence.*;
 	@NamedQuery(name="Studentcourse.findAll", query="SELECT s FROM Studentcourse s"),
 	@NamedQuery(name = "Studentcourse.findByNickname" , query = "SELECT s.studentCourse_idCourse FROM Studentcourse s WHERE s.studentCourse_Student = :nickname"),
 	@NamedQuery(name = "Studentcourse.findByCourseID" , query = "SELECT s.studentCourse_Student FROM Studentcourse s WHERE s.studentCourse_idCourse = :courseID"),
-	@NamedQuery(name = "Studentcourse.deleteByCourseID" , query = "DELETE FROM Studentcourse s WHERE s.studentCourse_idCourse = :courseID")
+	@NamedQuery(name = "Studentcourse.deleteByCourseID" , query = "DELETE FROM Studentcourse s WHERE s.studentCourse_idCourse = :courseID"),
+	@NamedQuery(name = "Studentcourse.deleteByStudentNickname" , query = "DELETE FROM Studentcourse s WHERE s.studentCourse_idCourse LIKE :nickname")
 })
 
 public class Studentcourse implements Serializable {
