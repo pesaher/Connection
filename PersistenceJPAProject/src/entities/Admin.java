@@ -27,6 +27,9 @@ public class Admin implements Serializable {
 
 	@Column(name="NameAdmin")
 	private String nameAdmin;
+	
+	@Column(name="SystemMoney")
+	private String systemMoney;
 
 	@Column(name="PasswordAdmin")
 	private String passwordAdmin;
@@ -65,6 +68,14 @@ public class Admin implements Serializable {
 
 	public void setPasswordAdmin(String passwordAdmin) {
 		this.passwordAdmin = passwordAdmin;
+	}
+	
+	public String getSystemMoney() {
+		return systemMoney;
+	}
+
+	public void setSystemMoney(String systemMoney) {
+		this.systemMoney = systemMoney;
 	}
 
 	/*

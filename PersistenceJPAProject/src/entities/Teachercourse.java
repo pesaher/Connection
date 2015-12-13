@@ -35,6 +35,9 @@ public class Teachercourse implements Serializable {
 	@Column(name="TeacherCourse_Teacher")
 	private String teacherCourse_Teacher;
 	
+	@Column(name="TeacherMoney")
+	private String teacherMoney;
+	
 	@Transient
 	private static AtomicInteger atomicID = null;
 
