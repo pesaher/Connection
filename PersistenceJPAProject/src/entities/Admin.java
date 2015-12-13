@@ -15,7 +15,8 @@ import com.google.common.util.concurrent.ExecutionError;
 @Table(name="admin")
 @NamedQueries({
 	@NamedQuery(name = "Admin.findAll", query = "SELECT a FROM Admin a"), 
-	@NamedQuery(name = "Admin.findHighestId" , query = "SELECT MAX(a.idAdmin) FROM Admin a")
+	@NamedQuery(name = "Admin.findHighestId" , query = "SELECT MAX(a.idAdmin) FROM Admin a"),
+	@NamedQuery(name = "Admin.findByName" , query = "SELECT a FROM Admin a WHERE a.nameAdmin LIKE :NameAdmin")
 })
 public class Admin implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -26,6 +27,9 @@ public class Admin implements Serializable {
 
 	@Column(name="NameAdmin")
 	private String nameAdmin;
+	
+	@Column(name="SystemMoney")
+	private String systemMoney;
 
 	@Column(name="PasswordAdmin")
 	private String passwordAdmin;
@@ -64,6 +68,14 @@ public class Admin implements Serializable {
 
 	public void setPasswordAdmin(String passwordAdmin) {
 		this.passwordAdmin = passwordAdmin;
+	}
+	
+	public String getSystemMoney() {
+		return systemMoney;
+	}
+
+	public void setSystemMoney(String systemMoney) {
+		this.systemMoney = systemMoney;
 	}
 
 	/*

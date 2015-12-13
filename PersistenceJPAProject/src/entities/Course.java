@@ -24,7 +24,8 @@ import com.google.common.util.concurrent.ExecutionError;
     @NamedQuery(name = "Course.findByNicknameNotValidated", query = "SELECT c FROM Course c WHERE c.professor = :nickname AND c.validated = 0"),
     @NamedQuery(name = "Course.findByTitle", query = "SELECT c FROM Course c WHERE c.title = :title"),
     @NamedQuery(name = "Course.findDescription", query = "SELECT c.descriptionCourse FROM Course c"),
-    @NamedQuery(name = "Course.deleteByID" , query = "DELETE FROM Course c WHERE c.idCourse = :courseID")
+    @NamedQuery(name = "Course.deleteByID" , query = "DELETE FROM Course c WHERE c.idCourse = :courseID"),
+    @NamedQuery(name = "Course.validate" , query = "UPDATE Course c SET c.validated = 1 WHERE c.idCourse = :courseID")
 })
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -44,6 +45,9 @@ public class Course implements Serializable {
 
 	@Column(name="Duration")
 	private int duration;
+	
+	@Column(name="MoneyForSystem")
+	private int moneyForSystem;
 
 	@Column(name="Highlighted")
 	private int highlighted;
@@ -197,11 +201,20 @@ public class Course implements Serializable {
 		this.validated = validated;
 	}
 	
+	public int getMoneyForSystem() {
+		return moneyForSystem;
+	}
+
+	public void setMoneyForSystem(int moneyForSystem) {
+		this.moneyForSystem = moneyForSystem;
+	}
+	
 	/*
 	 * Function that takes the maximum value of the ID(PK) on the table
 	 * and generates in an atomic way and increment of that value, so to create
 	 * a new ID for the new element.
 	 */
+	
 	private void generateID()
 	{
 		try
