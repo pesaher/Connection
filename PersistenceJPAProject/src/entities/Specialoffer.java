@@ -18,8 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Table(name="specialoffer")
 @NamedQueries({
 	@NamedQuery(name="Specialoffer.findAll", query="SELECT s FROM Specialoffer s"),
-	@NamedQuery(name = "Specialoffer.findHighestId" , query = "SELECT MAX(s.idSpecialOffer) FROM Specialoffer s"),
-	@NamedQuery(name = "Specialoffer.findByCourseId" , query = "SELECT s FROM Specialoffer s WHERE s.specialOffer_IdCourse = :idCourse")
+	@NamedQuery(name = "Specialoffer.findHighestId" , query = "SELECT MAX(s.idSpecialOffer) FROM Specialoffer s")
 })
 public class Specialoffer implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -39,8 +38,12 @@ public class Specialoffer implements Serializable {
 	@Column(name="Quantity")
 	private double quantity;
 
-	@Column(name="SpecialOffer_IdCourse")
-	private int specialOffer_IdCourse;
+	@Column(name="Name")
+	private String name;
+	
+	
+	@Column(name="Description")
+	private String description;
 
 	@Column(name="SpecialOfferCode")
 	private String specialOfferCode;
@@ -88,13 +91,35 @@ public class Specialoffer implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public int getSpecialOffer_IdCourse() {
-		return this.specialOffer_IdCourse;
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
 
-	public void setSpecialOffer_IdCourse(int specialOffer_IdCourse) {
-		this.specialOffer_IdCourse = specialOffer_IdCourse;
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
 
 	public String getSpecialOfferCode() {
 		return this.specialOfferCode;
