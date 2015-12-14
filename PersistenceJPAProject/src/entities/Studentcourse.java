@@ -15,6 +15,7 @@ import javax.persistence.*;
 	@NamedQuery(name = "Studentcourse.findByNickname" , query = "SELECT s.studentCourse_idCourse FROM Studentcourse s WHERE s.studentCourse_Student = :nickname"),
 	@NamedQuery(name = "Studentcourse.findByCourseID" , query = "SELECT s.studentCourse_Student FROM Studentcourse s WHERE s.studentCourse_idCourse = :courseID"),
 	@NamedQuery(name = "Studentcourse.deleteByCourseID" , query = "DELETE FROM Studentcourse s WHERE s.studentCourse_idCourse = :courseID"),
+	@NamedQuery(name = "Studentcourse.findWishlist", query = "SELECT s.studentCourse_idCourse FROM Studentcourse s WHERE s.studentCourse_Student = :nickname AND s.wishlist = 1"),
 	@NamedQuery(name = "Studentcourse.deleteByStudentNickname" , query = "DELETE FROM Studentcourse s WHERE s.studentCourse_Student LIKE :nickname")
 })
 
