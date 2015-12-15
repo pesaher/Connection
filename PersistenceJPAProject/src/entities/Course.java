@@ -25,7 +25,8 @@ import com.google.common.util.concurrent.ExecutionError;
     @NamedQuery(name = "Course.findByTitle", query = "SELECT c FROM Course c WHERE c.title = :title"),
     @NamedQuery(name = "Course.findDescription", query = "SELECT c.descriptionCourse FROM Course c"),
     @NamedQuery(name = "Course.deleteByID" , query = "DELETE FROM Course c WHERE c.idCourse = :courseID"),
-    @NamedQuery(name = "Course.validate" , query = "UPDATE Course c SET c.validated = 1 WHERE c.idCourse = :courseID")
+    @NamedQuery(name = "Course.validate" , query = "UPDATE Course c SET c.validated = 1 WHERE c.idCourse = :courseID"),
+    @NamedQuery(name = "Course.findValidatedByCategory" , query = "SELECT c FROM Course c WHERE c.validated = 1 AND c.category = :category")
 })
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
